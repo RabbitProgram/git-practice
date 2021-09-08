@@ -8,3 +8,4 @@ fugahogepiyo
 
 参考：
 https://github.com/hironomiu/Git-GitHub-Training/blob/master/training.md
+
