@@ -1,0 +1,41 @@
+﻿【 GitHubに間違ってコミットしたものを取り消す方法 】
+※作業前に必ずバックアップを取っておくこと！！
+vim操作について：https://qiita.com/one-a/items/a4e1d5a736d8408fd089
+
+＜「参考サイト.txt」を削除する場合（コミット履歴のdiffも見れなくする）＞
+参考サイト1：https://qiita.com/go_astrayer/items/6e39d3ab16ae8094496c
+参考サイト2：https://am1tanaka.hatenablog.com/entry/2015/07/08/173643
+
+git filter-branch --index-filter 'git rm --cached --ignore-unmatch 参考サイト.txt' HEAD
+※「Cannot rewrite branches: You have unstaged changes.」と表示されたら、
+　ローカルのディレクトリごと削除してからバージョン情報（GitHub）より
+　新規で読み込んでからコマンドを実行する
+↓
+git gc --aggressive --prune=now
+↓
+Android Studioで「強制プッシュ」
+
+
+
+＜特定のコミット履歴を削除する（なかったことにする）＞
+参考サイト：https://qiita.com/mikene_koko/items/d9c8e093b56648e569ad
+
+git log --oneline
+↓
+削除したいコミットメッセージの行を探し、左に黄色で表示されている7桁の英数字をコピーする
+（すべて表示されていない場合は、スクロールではなく下キーで確認する）
+コピーしたら「:q」と入力して終了する
+↓
+git rebase -i ｛上でコピーした7桁｝
+↓
+「i」キーを押して挿入モードにする
+↓
+取り消したいコミットの行を見つけたら、先頭の「pick」を「drop」に置き換える
+（他の行はそのままにしておく）
+↓
+Escキーを押してノーマルモード（コマンド入力）に切り替える
+↓
+「:wq」と入力し、保存して終了する
+※編集を間違えた場合は「:q!」と入力し、保存せずに終了する
+↓
+Android Studioで「強制プッシュ」
