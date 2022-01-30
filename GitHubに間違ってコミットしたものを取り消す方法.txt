@@ -7,9 +7,11 @@ vim操作について：https://qiita.com/one-a/items/a4e1d5a736d8408fd089
 参考サイト2：https://am1tanaka.hatenablog.com/entry/2015/07/08/173643
 
 git filter-branch --index-filter 'git rm --cached --ignore-unmatch 参考サイト.txt' HEAD
-※「Cannot rewrite branches: You have unstaged changes.」と表示されたら、
+※「Cannot rewrite branches: You have unstaged changes.」と表示される場合：
 　ローカルのディレクトリごと削除してからバージョン情報（GitHub）より
 　新規で読み込んでからコマンドを実行する
+※「You need to run this command from the toplevel of the working tree.」と表示される場合：
+　cdコマンドでプロジェクトのトップディレクトリ（appディレクトリの上）に移動してから再度コマンドを実行する
 ↓
 git gc --aggressive --prune=now
 ↓
