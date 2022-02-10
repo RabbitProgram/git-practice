@@ -6,10 +6,15 @@ vim操作について：https://qiita.com/one-a/items/a4e1d5a736d8408fd089
 参考サイト1：https://qiita.com/go_astrayer/items/6e39d3ab16ae8094496c
 参考サイト2：https://am1tanaka.hatenablog.com/entry/2015/07/08/173643
 
-git filter-branch --index-filter 'git rm --cached --ignore-unmatch 参考サイト.txt' HEAD
+（例：AndroidManifest.xmlを削除する場合）
+git filter-branch -f --tree-filter "rm -f 'app\src\main\AndroidManifest.xml'" HEAD
+（例：データフォルダーを削除する場合）
+git filter-branch -f --tree-filter "rm -rf 'データ'" HEAD
+※-fオプションで強制削除
 ※「Cannot rewrite branches: You have unstaged changes.」と表示される場合：
-　ローカルのディレクトリごと削除してからバージョン情報（GitHub）より
-　新規で読み込んでからコマンドを実行する
+　ローカルのディレクトリごと削除してからバージョン情報（GitHub）より新規で読み込んでからコマンドを実行する
+　または
+　一度コミットしてから再度実行する
 ※「You need to run this command from the toplevel of the working tree.」と表示される場合：
 　cdコマンドでプロジェクトのトップディレクトリ（appディレクトリの上）に移動してから再度コマンドを実行する
 ↓
@@ -19,6 +24,9 @@ git push -f
 または
 Android Studioで「強制プッシュ」
 
+
+＜リモートリポジトリ確認コマンド＞
+git remote -v
 
 
 ＜特定のコミット履歴を削除する（なかったことにする）＞
