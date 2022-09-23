@@ -33,7 +33,7 @@ git gc --aggressive --prune=now
 ↓<br>
 
 ```
-git push -f
+git push --force-with-lease
 ```
 
 または<br>
@@ -68,6 +68,10 @@ Escキーを押してノーマルモード（コマンド入力）に切り替�
 「:wq」と入力し、保存して終了する<br>
 ※編集を間違えた場合は「:q!」と入力し、保存せずに終了する<br>
 ↓<br>
+```
+git push --force-with-lease
+```
+または<br>
 Android Studioで「強制プッシュ」<br>
 <br>
 ## リモートリポジトリ確認コマンド
